@@ -1,6 +1,7 @@
 import AddNewTask from "./components/AddNewTask";
 import FavoriteTasks from "./components/FavoriteTasks";
 import Header from "./components/Header"
+import Tasks from "./components/Tasks";
 import './global.scss';
 
 
@@ -13,6 +14,7 @@ function App() {
       <div className="mainContent">
         <AddNewTask />
         <FavoriteTasks />
+        <Tasks />
       </div>
     </div>
   )

@@ -2,19 +2,19 @@ import React from 'react';
 
 import styles from './styles.module.scss'
 import EditTask from '../EditTask';
-import { Task, useAppContext } from '../../context/AppContext';
+import { useAppContext } from '../../context/AppContext';
 
-const FavoriteTasks: React.FC = () => {
-    const { favoriteTasks } = useAppContext();
+const Tasks: React.FC = () => {
+    const { tasks } = useAppContext();
 
     return (
         <div className={styles.mainContainer}>
             <div className={styles.divTitle}>
-                <h2>Favoritos</h2>
+                <h2>Outras tarefas</h2>
             </div>
             <div className={styles.containerFavoriteTasks}>
-                {favoriteTasks && favoriteTasks.map((t: Task) => (
-                    <EditTask task={t} key={t.id} />
+                {tasks && tasks.map((task) => (
+                    <EditTask task={task} key={task.id} />
                 ))}
             </div>
 
@@ -22,4 +22,4 @@ const FavoriteTasks: React.FC = () => {
     );
 }
 
-export default FavoriteTasks;
+export default Tasks;

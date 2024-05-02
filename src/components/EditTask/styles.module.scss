@@ -160,8 +160,25 @@
         }
     }
 }
+
 .noActionBtnEdit {
     background-color: transparent;
     border: none;
     cursor: pointer;
+}
+
+.footerDiv1 {
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+    padding-left: .7rem;
+}
+
+.divDeleteTask {
+    padding-right: '.5rem';
+    svg {
+        &:hover {
+            color: red;
+        }
+    }
 }
