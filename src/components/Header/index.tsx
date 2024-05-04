@@ -12,7 +12,6 @@ const Header: React.FC = () => {
     return (
         <div className={styles.container}>
             <div className={styles.flex50}>
-
                 <div className={styles['flex-align']}>
                     <img src={logo} width={'56px'} height={'56px'} alt="" />
                     <p>CoreNotes</p>

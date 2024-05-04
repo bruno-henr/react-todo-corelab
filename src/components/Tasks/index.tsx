@@ -12,7 +12,7 @@ const Tasks: React.FC = () => {
             <div className={styles.divTitle}>
                 <h2>Outras tarefas</h2>
             </div>
-            <div className={styles.containerFavoriteTasks}>
+            <div className={styles.containerTasks}>
                 {tasks && tasks.map((task) => (
                     <EditTask task={task} key={task.id} />
                 ))}

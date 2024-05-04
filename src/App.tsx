@@ -12,7 +12,7 @@ function App() {
   console.log('dataFilter ', dataFilter)
 
   return (
-    <div className='container'>
+    <div className="container">
       <Header />
       <div className="mainContent">
         {dataFilter.length > 0 && <SearchTasks />}

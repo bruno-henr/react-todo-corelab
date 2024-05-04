@@ -16,7 +16,7 @@
     }
 }
 
-.containerFavoriteTasks {
+.containerSearchTasks {
     width: 100%;
     display: grid;
     list-style: none;
@@ -24,4 +24,15 @@
     gap: 1rem;
     // grid-template-rows: repeat(2, 1fr);
 
+}
+
+
+@media screen and (max-width: 1024px) {
+    .mainContainer {
+        width: 85%;
+    }
+
+    .containerSearchTasks {
+        grid-template-columns: repeat(1, 1fr); 
+    }
 }

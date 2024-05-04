@@ -11,7 +11,7 @@ const SearchTasks: React.FC = () => {
             <div className={styles.divTitle}>
                 <h2>{dataFilter.length} resultados encontrados...</h2>
             </div>
-            <div className={styles.containerFavoriteTasks}>
+            <div className={styles.containerSearchTasks}>
                 {dataFilter && dataFilter.map((task) => (
                     <EditTask task={task} key={task.id} />
                 ))}
