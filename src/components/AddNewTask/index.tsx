@@ -128,6 +128,7 @@ const AddNewTask: React.FC = () => {
 
                 <div>
                     <PalletColors
+                        creationMode={true}
                         onChange={(color: string) => setColorSelected(color)}
                     />
                 </div>
