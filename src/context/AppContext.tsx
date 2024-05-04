@@ -1,5 +1,5 @@
 import { useQuery, useMutation, UseMutationResult, useQueryClient } from '@tanstack/react-query';
-import React, { createContext, useContext, ReactNode } from 'react';
+import React, { createContext, useContext, ReactNode, useState, useEffect } from 'react';
 import { api } from '../services/api';
 import { toast } from 'sonner';
 
@@ -34,12 +34,17 @@ interface AppState {
     deleteTaskMutation: UseMutationResult<any, Error, string, unknown>;
     rollbackTask: () => void;
     handleRemoveTask: (id: string) => void;
+    dataFilter: Task[],
+    setSearch: (s: string) => void
 }
 // Crie o contexto API
 const AppContext = createContext({} as AppState);
 
 // Crie o provedor de contexto
 export const AppProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
+    const [dataFilter, setDataFilter] = useState<Task[]>([]);
+    const [search, setSearch] = useState<string>('');
+
     const queryClient = useQueryClient();
     const { data, isLoading, refetch, } = useQuery({
         queryKey: ['tasks'], queryFn: async () => {
@@ -95,6 +100,23 @@ export const AppProvider: React.FC<{ children: ReactNode }> = ({ children }) => 
         refetch();
     }
 
+
+
+    useEffect(() => {
+        const onFilterTasks = () => {
+            setDataFilter(data?.filter((t: Task) =>
+                t.title.toLowerCase().includes(search.toLowerCase()) ||
+                t.content.toLowerCase().includes(search.toLowerCase())
+            ))
+        }
+        if (search) {
+            onFilterTasks();
+        } else {
+            setDataFilter([]);
+        }
+
+    }, [data, search])
+
     if (isLoading) {
         return <div>Carregando...</div>;
     }
@@ -107,7 +129,9 @@ export const AppProvider: React.FC<{ children: ReactNode }> = ({ children }) => 
             updateTaskMutation,
             deleteTaskMutation,
             rollbackTask,
-            handleRemoveTask
+            handleRemoveTask,
+            dataFilter,
+            setSearch
         }}>
             {children}
         </AppContext.Provider>

@@ -4,8 +4,10 @@ import styles from './styles.module.scss';
 import logo from '../../assets/logo.png'
 import { GoSearch } from 'react-icons/go';
 import { IoCloseSharp } from 'react-icons/io5';
+import { useAppContext } from '../../context/AppContext';
 
 const Header: React.FC = () => {
+    const { setSearch } = useAppContext();
 
     return (
         <div className={styles.container}>
@@ -17,7 +19,11 @@ const Header: React.FC = () => {
                 </div>
 
                 <div className={styles['box-input-search']}>
-                    <input type="text" placeholder='Pesquisar notas' />
+                    <input
+                        type="text"
+                        placeholder='Pesquisar notas'
+                        onChange={({ target }) => setSearch(target.value)}
+                    />
                     <div className={styles.divIcon}>
                         <GoSearch size={27} color='#9E9E9E' />
                     </div>
