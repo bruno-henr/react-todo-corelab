@@ -37,7 +37,7 @@ const EditTask: React.FC<IProps> = ({
 
     const handleDeleteTask = () => {
         console.log('id do removido ', taskForm.id)
-        
+
         handleRemoveTask(taskForm.id);
 
         const timeoutId = setTimeout(() => {
@@ -54,12 +54,16 @@ const EditTask: React.FC<IProps> = ({
             },
             duration: 5000
         });
-
-
     }
 
     return (
-        <div className={styles.container} style={{ background: colorSelected }}>
+        <motion.div
+            initial={{ scale: 0.6, }}
+            animate={{ scale: 1, }}
+            exit={{ scale: 0.6 }}
+            className={styles.container}
+            style={{ background: colorSelected }}
+        >
             <div className={styles.headerCard}>
                 <input
                     type="text"
@@ -67,7 +71,7 @@ const EditTask: React.FC<IProps> = ({
                     value={taskForm.title}
                     onChange={({ target }) => {
                         setTaskForm({ ...taskForm, title: target.value });
-                        setEditing(true)
+                        setEditing(true);
                     }}
                 />
                 <div className={styles.icon}>
@@ -118,7 +122,8 @@ const EditTask: React.FC<IProps> = ({
                     placeholder='Criar nota...'
                     value={taskForm.content}
                     onChange={({ target }) => {
-                        setTaskForm({ ...taskForm, content: target.value })
+                        setTaskForm({ ...taskForm, content: target.value });
+                        setEditing(true);
                     }}
                     rows={4}
                     cols={64}
@@ -154,7 +159,10 @@ const EditTask: React.FC<IProps> = ({
 
 
                     <PalletColors
-                        onChange={(color: string) => setColorSelected(color)}
+                        onChange={(color: string) => {
+                            setColorSelected(color);
+                            setEditing(true);
+                        }}
                         smallIcon={true}
                     />
                 </div>
@@ -167,7 +175,7 @@ const EditTask: React.FC<IProps> = ({
                     />
                 </div>
             </div>
-        </div>
+        </motion.div>
     );
 }
 
