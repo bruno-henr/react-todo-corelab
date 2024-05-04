@@ -9,15 +9,14 @@ import './global.scss';
 
 function App() {
   const { dataFilter } = useAppContext();
-  console.log('dataFilter ', dataFilter)
 
   return (
     <div className="container">
       <Header />
       <div className="mainContent">
-        {dataFilter.length > 0 && <SearchTasks />}
+        {dataFilter?.length > 0 && <SearchTasks />}
 
-        {!dataFilter.length && (<>
+        {!dataFilter?.length && (<>
           <AddNewTask />
           <FavoriteTasks />
           <Tasks />
