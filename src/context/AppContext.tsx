@@ -2,6 +2,7 @@ import { useQuery, useMutation, UseMutationResult, useQueryClient } from '@tanst
 import React, { createContext, useContext, ReactNode, useState, useEffect } from 'react';
 import { api } from '../services/api';
 import { toast } from 'sonner';
+import { BarLoader } from 'react-spinners';
 
 export interface Task {
     id: string,
@@ -38,7 +39,7 @@ interface AppState {
     setSearch: (s: string) => void
 }
 // Crie o contexto API
-const AppContext = createContext({} as AppState);
+export const AppContext = createContext({} as AppState);
 
 // Crie o provedor de contexto
 export const AppProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
@@ -118,7 +119,19 @@ export const AppProvider: React.FC<{ children: ReactNode }> = ({ children }) => 
     }, [data, search])
 
     if (isLoading) {
-        return <div>Carregando...</div>;
+        return <div style={{ 
+                display: 'flex', 
+                alignItems: 'center', 
+                justifyContent: 'center', 
+                flexDirection: 'column',
+                width: '100%',
+                height: '100vh'
+            }}>
+            <BarLoader color="#36d7b7" />
+            <p>
+                Carregando...
+            </p>
+        </div>;
     }
 
     return (
