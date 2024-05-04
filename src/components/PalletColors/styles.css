@@ -10,6 +10,31 @@
     /* transition: 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55); */
 }
 
+.alignPosition {
+    position: absolute;
+    top: 37px;
+    left: -50%;
+    transform: translateX(-50%);
+    pointer-events: auto;
+
+    width: 320px;
+    height: 150px;
+
+    background-color: #fff;
+    border: 2px solid #D9D9D9;
+    box-shadow: 0px 2px 8px -1px rgba(0, 0, 0, 0.2);
+
+    display: grid;
+    overflow: hidden;
+    margin: 0;
+    list-style: none;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    gap: 15px;
+    padding: 15px;
+    border-radius: 10px;
+}
+
 .containerMotion {
     position: absolute;
     top: 37px;
@@ -46,4 +71,34 @@
     cursor: pointer;
     background-color: transparent;
     padding-right: 1rem;
+}
+
+@media screen and (max-width: 560px) {
+    .alignPosition {
+        left: -107px;
+        transform: none;
+        width: 100vw;
+    }
+}
+
+@media screen and (max-width: 296px) {
+    .alignPosition {
+        left: -92px;
+        transform: none;
+        width: 100vw;
+        height: auto;
+        grid-template-columns: repeat(3, 1fr);
+        grid-template-rows: repeat(3, 1fr);
+    }
+}
+@media screen and (max-width: 236px) {
+    .alignPosition {
+        top: -17px;
+        left: -87px;
+        transform: none;
+        width: 100vw;
+        height: auto;
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: repeat(4, 1fr);
+    }
 }

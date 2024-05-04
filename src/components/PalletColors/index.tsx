@@ -26,8 +26,13 @@ const item = {
 interface IProps {
     onChange: (value: string) => void;
     smallIcon?: boolean;
+    creationMode?: boolean;
 }
-const PalletColors: React.FC<IProps> = ({ onChange, smallIcon = false }) => {
+const PalletColors: React.FC<IProps> = ({ 
+    onChange, 
+    smallIcon = false, 
+    creationMode = false 
+}) => {
     const [visible, setVisible] = useState(false);
     const colors = ["#BAE2FF", "#B9FFDD", "#FFE8AC", "#FFCAB9", "#F99494", "#9DD6FF", "#ECA1FF"]
 
@@ -41,7 +46,10 @@ const PalletColors: React.FC<IProps> = ({ onChange, smallIcon = false }) => {
             <div className='main'>
                 {visible && (
                     <motion.ul
-                        className="containerMotion"
+                        className={creationMode ? 
+                            "containerMotion" :
+                            "alignPosition"
+                        }
                         variants={container}
                         initial="hidden"
                         animate="visible"
@@ -62,9 +70,8 @@ const PalletColors: React.FC<IProps> = ({ onChange, smallIcon = false }) => {
                     onClick={() => {
                         setVisible(!visible)
                     }}
-                    // onBlur={() => setVisible(false)}
                 >
-                    <MdColorLens size={smallIcon ? 32: 42} />
+                    <MdColorLens id='pallet-color-task' size={smallIcon ? 32: 42} />
                 </button>
             </div>
         </div>
