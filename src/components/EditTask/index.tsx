@@ -36,8 +36,6 @@ const EditTask: React.FC<IProps> = ({
     }
 
     const handleDeleteTask = () => {
-        console.log('id do removido ', taskForm.id)
-
         handleRemoveTask(taskForm.id);
 
         const timeoutId = setTimeout(() => {
@@ -108,6 +106,7 @@ const EditTask: React.FC<IProps> = ({
                             <IoIosStar
                                 style={{ cursor: 'pointer' }}
                                 color='#fcd34d' size={22}
+                                id='icon-favorite-task'
                                 onClick={() => {
                                     setIsFavorite(false);
                                     setEditing(true);
@@ -134,19 +133,22 @@ const EditTask: React.FC<IProps> = ({
             <div className={styles.containerFooter}>
                 <div className={styles.footerDiv1}>
                     {!editing && <button className={styles.noActionBtnEdit}>
-                        <MdOutlineEdit size={32} />
+                        <MdOutlineEdit id='icon-edit-task' size={32} />
                     </button>}
                     {editing && (
                         <AnimatePresence>
-                            <motion.div layout
+                            <motion.div 
+                                layout
                                 style={{
                                     display: 'flex',
                                     alignItems: 'center',
                                     justifyContent: 'center',
-                                    gap: '1rem',
-                                }}>
+                                    gap: '1rem'
+                                }}
+                            >
                                 <div>
                                     <FaCheck
+                                        id='icon-save-edit-task'
                                         size={22}
                                         style={{ cursor: 'pointer' }}
                                         color='#58c97b'
@@ -169,6 +171,7 @@ const EditTask: React.FC<IProps> = ({
 
                 <div className={styles.divDeleteTask}>
                     <FaRegTrashAlt
+                        id='icon-delete-task'
                         size={26}
                         style={{ cursor: 'pointer' }}
                         onClick={() => handleDeleteTask()}
