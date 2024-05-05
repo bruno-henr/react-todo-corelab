@@ -66,6 +66,15 @@ npm test
 yarn test
 ```
 
+Recursos Adicionais
+
+- Este projeto utiliza Framer Motion para criação de animações suaves e bonitas.
+- Sass é utilizado como pré-processador CSS para uma estilização mais flexível.
+- TypeScript é usado para adicionar tipagem estática ao JavaScript, melhorando a robustez do código.
+- React Query é utilizado para otimizar a aplicação, oferecendo uma forma simples e eficiente de gerenciar dados remotos.
+- Sonner é utilizado para notificações visuais atraentes.
+- A interface foi desenvolvida com detalhes, tornando-a mais atrativa e fácil de usar, com animações suaves e bonitas em toda a aplicação.
+
 ## Contribuindo
 
 Sinta-se à vontade para contribuir, abrir problemas ou fornecer feedback para melhorar este projeto!
